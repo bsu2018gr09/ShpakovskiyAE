@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <iomanip>
 using namespace std;
 int** giveMemory(int N, int M);
@@ -8,14 +8,15 @@ void printArr(int **p, int N, int M);
 void freeMemory(int **p, int N);
 
 int main()
-{
+{/*В массиве А(N,М) часть строк состоит из нулей. удалить нулевые строки.*/
 	setlocale(LC_ALL, "rus");
 	int N, M;
-	cout << "������� ���������� ����� � ��������: " << '\n';
+	cout << "Введите количество строк и столбцов: ";
 	cin >> N >> M;
 	int **A = giveMemory(N, M);
+	cout << "Заполните массив: " << '\n';
 	initArr(A, N, M);
-	N=mainFunc(A, N, M);
+	N = mainFunc(A, N, M);
 	printArr(A, N, M);
 	freeMemory(A, N);
 	system("pause");
@@ -32,7 +33,7 @@ void initArr(int** p, int N, int M) {
 	for (int i = 0; i < N; i++) {
 		int* p1 = p[i];
 		for (int j = 0; j < M; j++) {
-			cin>>p1[j];
+			cin >> p1[j];
 		}
 	}
 }
@@ -52,7 +53,7 @@ void freeMemory(int** p, int N) {
 	}
 	delete[]p;
 }
-int mainFunc(int **p, int N, int M) 
+int mainFunc(int **p, int N, int M)
 {
 	bool flag(1);
 	for (int j = 0; j< N; j++)
