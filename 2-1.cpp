@@ -1,4 +1,5 @@
-﻿#include <iostream>
+/*В массиве А(N,М) часть строк состоит из нулей. удалить нулевые строки.*/
+#include <iostream>
 #include <iomanip>
 using namespace std;
 int** giveMemory(int N, int M);
@@ -8,7 +9,7 @@ void printArr(int **p, int N, int M);
 void freeMemory(int **p, int N);
 
 int main()
-{/*В массиве А(N,М) часть строк состоит из нулей. удалить нулевые строки.*/
+{
 	setlocale(LC_ALL, "rus");
 	int N, M;
 	cout << "Введите количество строк и столбцов: ";
