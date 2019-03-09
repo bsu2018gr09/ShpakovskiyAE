@@ -6,7 +6,7 @@ int** giveMemory(int N, int M);
 void initArr(int **p, int N, int M);
 int mainFunc(int **p, int N, int M);
 void printArr(int **p, int N, int M);
-void freeMemory(int **p, int N);
+void freeMemory(int **&arr, int N);
 
 int main()
 {
@@ -48,13 +48,14 @@ void printArr(int** p, int N, int M) {
 	}
 	cout << '\n';
 }
-void freeMemory(int** p, int N) {
-	for (int i = 0; i < N; i++) {
-		p[i] = nullptr;
+void freeMemory(int **&arr, int N) {
+	for (int i = 0; i < N; ++i) {
+		delete[] arr[i];
+		arr[i] = nullptr;
 	}
-	delete[]p;
-}
-int mainFunc(int **p, int N, int M)
+	delete[] arr;
+	arr = nullptr;
+}t N, int M)
 {
 	bool flag(1);
 	for (int j = 0; j< N; j++)
