@@ -1,5 +1,5 @@
 #include "pch.h"
-#include<iostream> 
+#include<iostream> //где условие задачи? Какой градиент ты делаешь???
 #include<fstream> 
 using namespace std;
 struct color { unsigned char r; unsigned char g; unsigned char b; } c;
