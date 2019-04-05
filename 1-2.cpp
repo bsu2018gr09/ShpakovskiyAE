@@ -5,7 +5,7 @@ using namespace std;
 void fillArr(int*A, int N);
 void freeMemory(int*A);
 int *InitArr(int N) {
-	int *A = new int[N];
+	int *A = new int[N];//нет проверки
 	return A;
 }
 void posNegSort(int*A, int N);
@@ -26,7 +26,7 @@ int main()
 }
 void freeMemory(int*A)
 {
-	delete[]A;
+	delete[]A;//нет nullptr
 }
 void fillArr(int*A, int N)
 {
@@ -46,7 +46,7 @@ void posNegSort(int*A, int N)
 		for (int j = 0; j < N - i - 1-k; j++)
 		{
 			if (*(A + j) < *(A + j + 1))
-				swap(*(A + j), *(A + j + 1));
+				swap(*(A + j), *(A + j + 1));//очень наивная сортировка без малейшей оптимизации  
 		}
 	}
 }
