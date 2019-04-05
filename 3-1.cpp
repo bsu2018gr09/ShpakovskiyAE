@@ -17,7 +17,7 @@ void giveMemory(char*&str)
 	str = new(nothrow) char[MAX];
 	if (!str)
 	{
-		cout << "error" << "\n";
+		cout << "error" << "\n";// и что? Ну вывели сообщение. И что???
 	}
 }
 int main()
