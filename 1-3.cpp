@@ -5,7 +5,7 @@ using namespace std;
 void fillArr(int*A, int N);
 void freeMemory(int*A);
 int *InitArr(int N) {
-	int *A = new int[N];
+	int *A = new int[N];//нет проверки
 	return A;
 }
 void printArr(int*A, int N);
@@ -60,7 +60,7 @@ void primeNumSort(int*A, int N)
 				if (isPrime(*(A+i)))
 				{
 					for (int j = 0; j < N ; j++)
-					{if(isPrime(*(A + j))&& *(A + i)< *(A + j))
+					{if(isPrime(*(A + j))&& *(A + i)< *(A + j))//нет оптимизации. Тебе приходится КАЖДЫЙ раз проверять на простоту. Хотя это можно сделать всего 1 раз
 						swap(*(A + i), *(A + j));
 					}
 				}
