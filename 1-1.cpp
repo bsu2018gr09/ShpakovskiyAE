@@ -10,7 +10,7 @@ void pointAndLineDistCalc(int*X, int*Y, int*D, int N, int a, int b, int c);
 void bubbleSort(int*X, int*Y, int*D, int N);
 void printArrays(int*A, int*B,int*D, int N);
 int *InitArr(int N) {
-	int *A = new int[N];
+	int *A = new int[N];//нет проверки
 	return A;
 }
 int main()
@@ -51,7 +51,7 @@ void pointAndLineDistCalc(int*X, int*Y,int*D, int N,int a,int b,int c)
 {	
 	for (int i = 0;i < N;i++)
 	{
-		*(D + i) = abs(a**(X + i)+b**(Y + i)+c)/sqrt(a*a+b*b);
+		*(D + i) = abs(a**(X + i)+b**(Y + i)+c)/sqrt(a*a+b*b);//очень неудачная идея считать в каждом цикле sqrt(a*a+b*b);!!!!
 	}
 }
 void bubbleSort(int*X, int*Y, int*D,int N)
