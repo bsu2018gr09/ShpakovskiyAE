@@ -23,9 +23,9 @@ int main()
 	system("pause");
 }
 int** giveMemory(int N, int M) {
-	int** p = new(nothrow) int*[N];
+	int** p = new(nothrow) int*[N];//нет проверки
 	for (int i = 0; i < N; ++i) {
-		int* p1 = new(nothrow) int[M];
+		int* p1 = new(nothrow) int[M];//нет проверки
 		p[i] = p1;
 	}
 	return p;
@@ -54,8 +54,8 @@ void freeMemory(int **&arr, int N) {
 		arr[i] = nullptr;
 	}
 	delete[] arr;
-	arr = nullptr;
-}t N, int M)
+	arr = nullptr;//утеряна часть кода тут
+}t N, int M)//утеряна часть кода тут
 {
 	bool flag(1);
 	for (int j = 0; j< N; j++)
@@ -74,7 +74,7 @@ void freeMemory(int **&arr, int N) {
 			{
 				for (int l = 0; l < M; l++)
 				{
-					p[k][l] = p[k + 1][l];
+					p[k][l] = p[k + 1][l];//ничего не удаляется. Перемещаем данные. Не пользуешься  указателями!!!!
 				}
 			}
 			--N;
