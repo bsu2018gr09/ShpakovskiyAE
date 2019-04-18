@@ -1,5 +1,5 @@
 ﻿//Класс треугольник в декартовой прямоугольной с/к
-//#include "pch.h"
+#include "pch.h"
 #include <iostream>
 #include <ctime>
 #include <math.h>
