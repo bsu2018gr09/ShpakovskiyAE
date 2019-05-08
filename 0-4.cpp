@@ -1,4 +1,5 @@
-﻿#include<iostream>
+/*Расположить в порядке возрастания элементы массива А(N), начиная с k-го элемента.*/
+#include<iostream>
 #include<time.h>
 using namespace std;
 void randInitArr(int *A, int N, int left, int right);
