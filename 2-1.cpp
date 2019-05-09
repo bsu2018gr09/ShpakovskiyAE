@@ -1,4 +1,4 @@
-/*В массиве А(N,М) часть строк состоит из нулей. удалить нулевые строки.*/
+/*В массиве А(N, М) часть строк состоит из нулей.удалить нулевые строки.*/
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -23,10 +23,18 @@ int main()
 	system("pause");
 }
 int** giveMemory(int N, int M) {
-	int** p = new(nothrow) int*[N];//нет проверки
-	for (int i = 0; i < N; ++i) {
-		int* p1 = new(nothrow) int[M];//нет проверки
-		p[i] = p1;
+	int **p = new (nothrow) int*[N];
+	if (!p) {
+		cout << "Ошибка!";
+		return 0;
+	}
+	for (int i = 0; i < N; ++i)
+	{
+		p[i] = new int[M];
+		if (!p[i]) {
+			cout << "Ошибка!";
+			return 0;
+		}
 	}
 	return p;
 }
@@ -48,17 +56,20 @@ void printArr(int** p, int N, int M) {
 	}
 	cout << '\n';
 }
-void freeMemory(int **&arr, int N) {
-	for (int i = 0; i < N; ++i) {
+void freeMemory(int **&arr, int N)
+{
+	for (int i = 0; i < N; ++i)
+	{
 		delete[] arr[i];
 		arr[i] = nullptr;
 	}
 	delete[] arr;
-	arr = nullptr;//утеряна часть кода тут
-}t N, int M)//утеряна часть кода тут
+	arr = nullptr;
+}
+int mainFunc(int **p, int N, int M)
 {
 	bool flag(1);
-	for (int j = 0; j< N; j++)
+	for (int j = 0; j < N; j++)
 	{
 		for (int i = 0; i < M; i++)
 		{
@@ -74,8 +85,10 @@ void freeMemory(int **&arr, int N) {
 			{
 				for (int l = 0; l < M; l++)
 				{
-					p[k][l] = p[k + 1][l];//ничего не удаляется. Перемещаем данные. Не пользуешься  указателями!!!!
+					p[k][l] = p[k + 1][l];
 				}
+				delete[] p[k + 1];
+				p[k + 1] = nullptr;
 			}
 			--N;
 		}
