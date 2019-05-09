@@ -1,4 +1,4 @@
-/*Даны точки плоскости своими координатами в виде двух одномерных массивов (случайные числа). 
+/*Даны точки плоскости своими координатами в виде двух одномерных массивов (случайные числа).
 	Точки плоскости рассортировать по возрастанию расстояния до прямой ax + by + c = 0.*/
 #include <iostream> 
 #include <time.h> 
@@ -10,7 +10,13 @@ void pointAndLineDistCalc(int*X, int*Y, int*D, int N, int a, int b, int c);
 void bubbleSort(int*X, int*Y, int*D, int N);
 void printArrays(int*A, int*B,int*D, int N);
 int *InitArr(int N) {
-	int *A = new int[N];//нет проверки
+	int *A = new int[N];
+	if (!A)
+	{
+		cout << "Ошибка!\n";
+		system("pause");
+		return 0;
+	}
 	return A;
 }
 int main()
@@ -46,12 +52,14 @@ void randomArr(int*A, int N, int left, int right) {
 void freeMemory(int*A)
 {
 	delete[]A;
+	A=nullptr;
 }
 void pointAndLineDistCalc(int*X, int*Y,int*D, int N,int a,int b,int c)
-{	
+{
+	int m = sqrt(a*a + b * b);
 	for (int i = 0;i < N;i++)
 	{
-		*(D + i) = abs(a**(X + i)+b**(Y + i)+c)/sqrt(a*a+b*b);//очень неудачная идея считать в каждом цикле sqrt(a*a+b*b);!!!!
+		*(D + i) = abs(a**(X + i)+b**(Y + i)+c)/m;
 	}
 }
 void bubbleSort(int*X, int*Y, int*D,int N)
@@ -72,5 +80,5 @@ void bubbleSort(int*X, int*Y, int*D,int N)
 }
 void printArrays(int*A,int*B,int*D, int N) {
 	for (int i = 0;i < N;i++)
-		cout <<'('<< *(A + i)<<',' <<*(B+i)<<')' << fixed <<*(D+i) << '\n';
+		cout <<'('<< *(A + i)<<',' <<*(B+i)<<')' << setw(5) <<*(D+i) << '\n';
 }
