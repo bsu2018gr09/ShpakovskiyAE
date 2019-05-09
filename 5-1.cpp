@@ -1,4 +1,4 @@
-//Горизонтальный градиент c выбранным начальным и конечным цветом
+//ГѓГ®Г°ГЁГ§Г®Г­ГІГ Г«ГјГ­Г»Г© ГЈГ°Г Г¤ГЁГҐГ­ГІ c ГўГ»ГЎГ°Г Г­Г­Г»Г¬ Г­Г Г·Г Г«ГјГ­Г»Г¬ ГЁ ГЄГ®Г­ГҐГ·Г­Г»Г¬ Г¶ГўГҐГІГ®Г¬ 
 #include<iostream>
 #include<cmath>
 #include<fstream> 		                 
@@ -32,7 +32,7 @@ int main() {
 	cout << '\n' << "step: ";
 	cin >> step;
 	unsigned int rStart, gStart, bStart;
-	cout << "Введите r, g и b начального цвета: ";
+	cout << "Г‚ГўГҐГ¤ГЁГІГҐ r, g ГЁ b Г­Г Г·Г Г«ГјГ­Г®ГЈГ® Г¶ГўГҐГІГ : ";
 	cin >> rStart;
 	cin >> gStart; 
 	cin >> bStart;
@@ -40,7 +40,7 @@ int main() {
 	c.g = gStart;
 	c.b = bStart;
 	float rEnd = 0, gEnd = 0, bEnd = 0;
-	cout << "Введите r, g и b конечного цвета: ";
+	cout << "Г‚ГўГҐГ¤ГЁГІГҐ r, g ГЁ b ГЄГ®Г­ГҐГ·Г­Г®ГЈГ® Г¶ГўГҐГІГ : ";
 	cin >> rEnd;
 	cin >> gEnd;
 	cin >> bEnd;
