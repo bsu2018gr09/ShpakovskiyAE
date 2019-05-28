@@ -3,6 +3,7 @@
 #include<iostream>
 #include<cstring>
 #include<clocale>
+#include <Windows.h>
 const int MAX{ 255 };
 using namespace std;
 
@@ -17,11 +18,13 @@ void giveMemory(char*&str)
 	str = new(nothrow) char[MAX];
 	if (!str)
 	{
-		cout << "error" << "\n";// и что? Ну вывели сообщение. И что???
+		cout << "error" << "\n";
 	}
 }
 int main()
 {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	setlocale(LC_ALL, "rus");
 	
 	char*str = nullptr;
