@@ -1,86 +1,127 @@
 ﻿//Класс треугольник в декартовой прямоугольной с/к
-#include "pch.h"
 #include <iostream>
 #include <ctime>
 #include <math.h>
 using namespace std;
 class Triangle {
 public:
-	Triangle(){ cout << "Constructor is working\n"; };
-	Triangle(float x1, float y1, float x2, float y2, float x3, float y3)
-	{ ax=x1, ay=y1, bx=x2, by=y2, cx=x3, cy=y3; 
-	if ((ax - cx)*(by - cy) == (bx - cx)*(ay - cy))//Проверка лежат ли точки на 1 прямой
+	Triangle() { cout << "Constructor is working\n"; };
+	Triangle(float m, float n, float k)
 	{
-		cout << "It's not a triangle"; ax, ay, bx, cy = 0;by, cx = 1;
-	}
+		l1 = m; l2 = n; l3 = k;
+		if (m + n <= k || m + k <= n || n + k <= m)
+		{
+			cout << "It's not a triangle"; l1 = 1;l2 = 1;l3 = 1;
+		}
 	};
+	Triangle(float m)
+	{
+		l1 = m;l2 = m;l3 = m;
+	}
 	~Triangle() { cout << "Destructor is working\n"; };
 	void input()
 	{
 		bool k{ 1 };
 		while (k)
 		{
-			cout << "Enter the x and y coordinates of first point: ";
-			cin >> ax >> ay;
-			cout << "Enter the x and y coordinates of second point: ";
-			cin >> bx >> by;
-			cout << "Enter the x and y coordinates of third point: ";
-			cin >> cx >> cy;
+			cout << "Enter the lenght of 1st line: ";
+			cin >> l1;
+			cout << "Enter the lenght of 2nd line: ";
+			cin >> l2;
+			cout << "Enter the lenght of 3rd line: ";
+			cin >> l3;
 			k = 0;
-			if ((ax - cx)*(by - cy) == (bx - cx)*(ay - cy))
+			if (l1 + l2 <= l3 || l2 + l3 <= l1 || l1 + l3 <= l2)
 			{
-				cout << "It's not a triangle\n";
-				k = 1;
+				cout << "It's not a triangle"; l1 = 1;l2 = 1;l3 = 1;
 			}
 		}
 	};
-	void output() 
+	void output()
 	{
-		cout << "A:" << "(" << ax << ";" << ay << ")\n";
-		cout << "B:" << "(" << bx << ";" << by << ")\n";
-		cout << "C:" << "(" << cx << ";" << cy << ")\n";
+		cout << "1st side: " << l1 << "\n";
+		cout << "2nd side: " << l2 << "\n";
+		cout << "3rd side: " << l3 << "\n";
 	};
-	float sideLngth(float x1, float y1, float x2, float y2)// совсем плохо!!!! откуда столько параметров???? я хочу узнать у ТРЕУГОЛЬНИКА что то 
+	void setl1(float m)
 	{
-		float length;
-		length = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));//Ой, что за код???? Ужас!!!! Где оптимизация???? зачем pow
-		return length;
-	};
-	float perimeter(float x1, float y1, float x2, float y2, float x3, float y3)// совсем плохо!!!! откуда столько параметров???? я хочу узнать у ТРЕУГОЛЬНИКА что то 
+		if (m + l2 <= l3 || l2 + l3 <= m || m + l3 <= l2)
+		{
+			cout << "It's not a triangle";
+		}
+		else
+			l1 = m;
+	}
+	void setl2(float m)
+	{
+		if (l1 + m <= l3 || m + l3 <= l1 || l1 + l3 <= m)
+		{
+			cout << "It's not a triangle";
+		}
+		else
+			l2 = m;
+	}
+	void setl3(float m)
+	{
+		if (l1 + l2 <= m || l2 + m <= l1 || l1 + m <= l2)
+		{
+			cout << "It's not a triangle";
+		}
+		else
+			l3 = m;
+	}
+	float getl1() { return l1; }
+	float getl2() { return l2; }
+	float getl3() { return l3; }
+	float perimeter(float m, float n, float k)
 	{
 		float p;
-		
-		p = sideLngth(x1,y1,x2,y2) + sideLngth(x1, y1, x3, y3) + sideLngth(x2, y2, x3, y3);
-			return p;
+		p = m + n + k;
+		return p;
 	};
-	float square(float x1, float y1, float x2, float y2, float x3, float y3)//что за дурное название???? // совсем плохо!!!! откуда столько параметров???? я хочу узнать у ТРЕУГОЛЬНИКА что то 
+	float ploshad(float m, float n, float k)
 	{
 		float s;
-		float p = perimeter(x1, y1, x2, y2, x3, y3) / 2;
-		s = sqrt(p*(p - sideLngth(x1, y1, x2, y2))*(p - sideLngth(x1, y1, x3, y3))*(p - sideLngth(x2, y2, x3, y3)));
-			return s;
+		float p = perimeter(m, n, k) / 2;
+		s = sqrt(p*(p - k)*(p - m)*(p - n));
+		return s;
 	};
-	void moving(float dx,float dy) 
+	void TriangleType(float m, float n, float k)
 	{
-		ax += dx;bx += dx;cx += dx;
-		ay += dy;by += dy;cy += dy;
-	};
+		if (m == n && n == k)
+		{
+			cout << "Ravnostoronniy\n";
+			return;
+		}
+		if (m == sqrt(n*n + k * k) || n == sqrt(m*m + k * k) || k == sqrt(m*m + n * n))
+		{
+			cout << "Priamougolniy\n";
+			return;
+		}
+		if ((m == n && m != k) || (n == k && n != m) || (k == m && k != n))
+		{
+			cout << "Ravnobedrenniy\n";
+			return;
+		}
+		cout << "Raznostoronniy";
+	}
 private:
-	float ax, ay, bx, by, cx, cy;
+	float l1, l2, l3;
 };
 
-int main() 
+int main()
 {
-	int N,mx,my,nx,ny,px,py;
+	int N, a, b, c;
 	cout << "Number of elements: ";
 	cin >> N;
 	Triangle abc;
 	Triangle* f = new (nothrow) Triangle[N];
 	abc.input();
-	abc.moving(5, 7);
 	abc.output();
-	cin >> mx >> my >> nx >> ny >> px >> py;
-	Triangle mnp(mx, my, nx, ny, px, py);
-	cout << "Perimeter: " << mnp.perimeter(mx, my, nx, ny, px, py) << "\nSquare: " << mnp.square(mx, my, nx, ny, px, py);
+	cin >> a >> b >> c;
+	Triangle mnp(a, b, c);
+	cout << "Perimeter: " << mnp.perimeter(a, b, c) << "\nSquare: " << mnp.ploshad(a, b, c) << '\n';
+	abc.TriangleType(a, b, c);
+
 	system("pause");
 }
