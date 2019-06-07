@@ -85,7 +85,7 @@ int mainFunc(int **p, int N, int M)
 			{
 				for (int l = 0; l < M; l++)
 				{
-					p[k][l] = p[k + 1][l];
+					p[k][l] = p[k + 1][l]; // это НЕ то, что надо в этой лабе!!!!!
 				}
 				delete[] p[k + 1];
 				p[k + 1] = nullptr;
