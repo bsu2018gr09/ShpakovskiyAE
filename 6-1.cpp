@@ -5,8 +5,8 @@
 using namespace std;
 class Triangle {
 public:
-	Triangle() { cout << "Constructor is working\n"; };
-	Triangle(float m, float n, float k)
+	Triangle() { cout << "Constructor is working\n"; };// а где инициализация????
+	Triangle(float m, float n, float k)// а где инициализация????
 	{
 		l1 = m; l2 = n; l3 = k;
 		if (m + n <= k || m + k <= n || n + k <= m)
@@ -14,7 +14,7 @@ public:
 			cout << "It's not a triangle"; l1 = 1;l2 = 1;l3 = 1;
 		}
 	};
-	Triangle(float m)
+	Triangle(float m)// а где инициализация????
 	{
 		l1 = m;l2 = m;l3 = m;
 	}
@@ -45,7 +45,7 @@ public:
 	};
 	void setl1(float m)
 	{
-		if (m + l2 <= l3 || l2 + l3 <= m || m + l3 <= l2)
+		if (m + l2 <= l3 || l2 + l3 <= m || m + l3 <= l2) //все время одинаковые проверки по тексту. Может стоит сделать функцию, которая проверяет на существование треугольника????
 		{
 			cout << "It's not a triangle";
 		}
